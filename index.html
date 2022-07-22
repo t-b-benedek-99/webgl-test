@@ -146,14 +146,21 @@
           myobj2.remove();
 
           createUnityInstance(document.querySelector("#unity-canvas"), {
-            dataUrl: "Build/acb26a47c405334edae77f77f0035e79.data.unityweb",
-            frameworkUrl: "Build/0c5249ba48cefa0771e440ba7e018580.js.unityweb",
-            codeUrl: "Build/7b1cd8a7bfbd45a9c46f2eeb2810953e.wasm.unityweb",
+            dataUrl: "Build/ffb832d04b0959766e3fd8bcf7190bbd.data.unityweb",
+            frameworkUrl: "Build/959f5c5439cc8825e9409d3197d64728.js.unityweb",
+            codeUrl: "Build/b75bffe5bedd713c8a24d38232a921dd.wasm.unityweb",
             streamingAssetsUrl: "StreamingAssets",
             companyName: "Bookr",
             productName: "Webapp",
             productVersion: "1.0.8",
           });
+		  
+		var win = document.querySelector("#unity-canvas").contentWindow;
+		var range = win.document.createRange();
+		range.setStart(win.document.body, 0);
+		range.setEnd(win.document.body, 0);
+		win.document.body.focus();
+		win.getSelection().addRange(range);
       }
     </script>
   </body>
