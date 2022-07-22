@@ -134,6 +134,7 @@
     <script src="baseFunctions.js"></script>
     <script src="index.js"></script>
     <script>
+	  console.log("Hello bella!!!!");
 	  document.getElementsByTagName("BODY")[0].click();
 	
       if (isVideoPlayerNeeded()) {         
