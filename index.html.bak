@@ -160,6 +160,13 @@
             productName: "{{{ PRODUCT_NAME }}}",
             productVersion: "{{{ PRODUCT_VERSION }}}",
           });
+		  
+		var win = document.querySelector("#unity-canvas").contentWindow;
+		var range = win.document.createRange();
+		range.setStart(win.document.body, 0);
+		range.setEnd(win.document.body, 0);
+		win.document.body.focus();
+		win.getSelection().addRange(range);
       }
     </script>
   </body>

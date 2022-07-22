@@ -146,7 +146,7 @@
           myobj2.remove();
 
           createUnityInstance(document.querySelector("#unity-canvas"), {
-            dataUrl: "Build/ffb832d04b0959766e3fd8bcf7190bbd.data.unityweb",
+            dataUrl: "Build/a7a0227401739193d02357063bea63e6.data.unityweb",
             frameworkUrl: "Build/959f5c5439cc8825e9409d3197d64728.js.unityweb",
             codeUrl: "Build/b75bffe5bedd713c8a24d38232a921dd.wasm.unityweb",
             streamingAssetsUrl: "StreamingAssets",
@@ -155,12 +155,7 @@
             productVersion: "1.0.8",
           });
 		  
-		var win = document.querySelector("#unity-canvas").contentWindow;
-		var range = win.document.createRange();
-		range.setStart(win.document.body, 0);
-		range.setEnd(win.document.body, 0);
-		win.document.body.focus();
-		win.getSelection().addRange(range);
+		document.querySelector("#unity-canvas").click();
       }
     </script>
   </body>
