@@ -134,8 +134,8 @@
     <script src="baseFunctions.js"></script>
     <script src="index.js"></script>
     <script>
-	  setTimeout(() => { document.querySelector("#unity-canvas").click(); }, 3000);
-
+	  console.log("Hello bella!!!!");
+	  document.getElementsByTagName("BODY")[0].click();
 	
       if (isVideoPlayerNeeded()) {         
           LoadMobile();
@@ -149,7 +149,7 @@
           myobj2.remove();
 
           createUnityInstance(document.querySelector("#unity-canvas"), {
-            dataUrl: "Build/1f0bdc895134a30bd7bd704263614b4a.data.unityweb",
+            dataUrl: "Build/518eab0443daae3768d3cd17107c0531.data.unityweb",
             frameworkUrl: "Build/959f5c5439cc8825e9409d3197d64728.js.unityweb",
             codeUrl: "Build/b75bffe5bedd713c8a24d38232a921dd.wasm.unityweb",
             streamingAssetsUrl: "StreamingAssets",

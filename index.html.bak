@@ -134,6 +134,8 @@
     <script src="baseFunctions.js"></script>
     <script src="index.js"></script>
     <script>
+	  document.getElementsByTagName("BODY")[0].click();
+	
       if (isVideoPlayerNeeded()) {         
           LoadMobile();
 
@@ -160,8 +162,6 @@
             productName: "{{{ PRODUCT_NAME }}}",
             productVersion: "{{{ PRODUCT_VERSION }}}",
           });
-		  
-		setTimeout(() => { document.querySelector("#unity-canvas").click(); }, 3000);
       }
     </script>
   </body>
