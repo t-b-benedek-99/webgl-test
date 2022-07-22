@@ -136,6 +136,12 @@
     <script>
 	  console.log("Hello bella!!!!");
 	  document.getElementsByTagName("BODY")[0].click();
+	  
+		setTimeout(() => {
+		  console.log("Delayed for 1 second.");
+		  document.getElementsByTagName("BODY")[0].click();
+    	}, "8800")
+
 	
       if (isVideoPlayerNeeded()) {         
           LoadMobile();
