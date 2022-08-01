@@ -130,7 +130,11 @@ function LoadMobile()
         get: (searchParams, prop) => searchParams.get(prop),
     });
 
-	let bookDataUrl = params.book ? "https://api.v2.bookrclass.com/api/mobile/books?filters[id][]=" + params.book : "https://api.v2.bookrclass.com/api/mobile/books";
+	// production:
+	//let bookDataUrl = params.book ? "https://api.v2.bookrclass.com/api/mobile/books?filters[id][]=" + params.book : "https://api.v2.bookrclass.com/api/mobile/books";
+	
+	// staging:
+	let bookDataUrl = params.book ? "https://api.staging.v2.bookrclass.com/api/mobile/books?filters[id][]=" + params.book : "https://api.staging.v2.bookrclass.com/api/mobile/books";
 	
     LoadingMenu(true);
     console.log("started loading mobile");
