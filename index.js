@@ -130,11 +130,15 @@ function LoadMobile()
         get: (searchParams, prop) => searchParams.get(prop),
     });
 
+	var bookId = params.book;
+    if (!bookId)
+        bookId = params.bookId;
+
 	// production:
-	//let bookDataUrl = params.book ? "https://api.v2.bookrclass.com/api/mobile/books?filters[id][]=" + params.book : "https://api.v2.bookrclass.com/api/mobile/books";
+	//let bookDataUrl = bookId ? "https://api.v2.bookrclass.com/api/mobile/books?filters[id][]=" + bookId : "https://api.v2.bookrclass.com/api/mobile/books";
 	
 	// staging:
-	let bookDataUrl = params.book ? "https://api.staging.v2.bookrclass.com/api/mobile/books?filters[id][]=" + params.book : "https://api.staging.v2.bookrclass.com/api/mobile/books";
+	let bookDataUrl = bookId ? "https://api.staging.v2.bookrclass.com/api/mobile/books?filters[id][]=" + bookId : "https://api.staging.v2.bookrclass.com/api/mobile/books";
 	
     LoadingMenu(true);
     console.log("started loading mobile");
@@ -183,7 +187,8 @@ function LoadMobile()
             });
         } else {
             console.log("no login parameter is found");
-            BookDataRecived({result: {list: [0]}}, false);
+            //BookDataRecived({result: {list: [0]}}, false);
+			BookDataRecived(jsonData, false);
         }
     }).catch((error) => {
         console.error('Error:', error);
