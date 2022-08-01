@@ -126,19 +126,30 @@ function BookDataRecived(jsonData, isLoggedIn)
 
 function LoadMobile()
 {
+	const params = new Proxy(new URLSearchParams(window.location.search), {
+        get: (searchParams, prop) => searchParams.get(prop),
+    });
+
+	// production:
+	//let bookDataUrl = params.book ? "https://api.v2.bookrclass.com/api/mobile/books?filters[id][]=" + params.book : "https://api.v2.bookrclass.com/api/mobile/books";
+	
+	// staging:
+	let bookDataUrl = params.book ? "https://api.staging.v2.bookrclass.com/api/mobile/books?filters[id][]=" + params.book : "https://api.staging.v2.bookrclass.com/api/mobile/books";
+	
     LoadingMenu(true);
     console.log("started loading mobile");
     //fetch("./StreamingAssets/books/booklist.json")
     //fetch("https://bookrlab.com/webvideo/booksList.php")
-    fetch("https://api.v2.bookrclass.com/api/mobile/books")
+    //fetch("https://api.v2.bookrclass.com/api/mobile/books")
+    fetch(bookDataUrl)
     .then(response => {
         console.log("Books recived");
         return response.json();
     })
     .then(jsonData =>  {		  
-        const params = new Proxy(new URLSearchParams(window.location.search), {
+        /*const params = new Proxy(new URLSearchParams(window.location.search), {
             get: (searchParams, prop) => searchParams.get(prop),
-        });
+        });*/
         if (params.accessToken)
         {
             console.log("accessToken login started");
