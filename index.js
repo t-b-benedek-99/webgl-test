@@ -135,10 +135,10 @@ function LoadMobile()
         bookId = params.bookId;
 
 	// production:
-	//let bookDataUrl = bookId ? "https://api.v2.bookrclass.com/api/mobile/books?filters[id][]=" + bookId : "https://api.v2.bookrclass.com/api/mobile/books";
+	let bookDataUrl = bookId ? "https://api.v2.bookrclass.com/api/mobile/books?filters[id][]=" + bookId : "https://api.v2.bookrclass.com/api/mobile/books";
 	
 	// staging:
-	let bookDataUrl = bookId ? "https://api.staging.v2.bookrclass.com/api/mobile/books?filters[id][]=" + bookId : "https://api.staging.v2.bookrclass.com/api/mobile/books";
+	//let bookDataUrl = bookId ? "https://api.staging.v2.bookrclass.com/api/mobile/books?filters[id][]=" + bookId : "https://api.staging.v2.bookrclass.com/api/mobile/books";
 	
     LoadingMenu(true);
     console.log("started loading mobile");
