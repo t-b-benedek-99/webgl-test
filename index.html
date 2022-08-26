@@ -130,7 +130,7 @@
         web browser that
     </video-->
     <ul id="book-list"></ul>
-    <script src="Build/WebGL_TestServerDeploy_2022_08_25_new_apibase_and_sso_test_v9.loader.js"></script>
+    <script src="Build/WebGL_TestServerDeploy_2022_08_25_new_apibase_and_sso_test_v10.loader.js"></script>
     <script src="baseFunctions.js"></script>
     <script src="index.js"></script>
     <script>
@@ -146,14 +146,16 @@
           myobj2.remove();
 
           createUnityInstance(document.querySelector("#unity-canvas"), {
-            dataUrl: "Build/1d5fb1825f6eb01585db09fdb8677278.data.unityweb",
+            dataUrl: "Build/4388b62d9a231ec3bd59de511ea839bb.data.unityweb",
             frameworkUrl: "Build/4516242288ad97aca3eeb9dbffbd35c3.js.unityweb",
             codeUrl: "Build/b20c6b52768769e5298fedab1e243bcf.wasm.unityweb",
             streamingAssetsUrl: "StreamingAssets",
             companyName: "Bookr",
             productName: "Webapp",
             productVersion: "1.0.8",
-          });
+          }).then((unityInstance) => {
+			window.unityInstance = unityInstance;
+		  });
       }
     </script>
   </body>

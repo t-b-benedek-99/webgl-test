@@ -49,16 +49,16 @@ function myEndHandler(e) {
 }
 
 function pauseBook() {
-	unityInstance.SendMessage('JavaScriptHook', 'PauseBook');
+	window.unityInstance.SendMessage('JavaScriptHook', 'PauseBook');
 }
 
 function startBook() {
-	unityInstance.SendMessage('JavaScriptHook', 'StartBook');
+	window.unityInstance.SendMessage('JavaScriptHook', 'StartBook');
 }
 
 
 function toggleStartPause() {
-	unityInstance.SendMessage('JavaScriptHook', 'TogglePauseBook');
+	window.unityInstance.SendMessage('JavaScriptHook', 'TogglePauseBook');
 }
 
 function myMoreThanEigthyPercentReachedHandler(seekerPercent) {
