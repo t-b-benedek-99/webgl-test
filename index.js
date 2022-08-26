@@ -48,6 +48,19 @@ function myEndHandler(e) {
     window.top.postMessage(resultJson, '*');
 }
 
+function pauseBook() {
+	unityInstance.SendMessage('JavaScriptHook', 'PauseBook');
+}
+
+function startBook() {
+	unityInstance.SendMessage('JavaScriptHook', 'StartBook');
+}
+
+
+function toggleStartPause() {
+	unityInstance.SendMessage('JavaScriptHook', 'TogglePauseBook');
+}
+
 function myMoreThanEigthyPercentReachedHandler(seekerPercent) {
     const params = new Proxy(new URLSearchParams(window.location.search), {
         get: (searchParams, prop) => searchParams.get(prop),
