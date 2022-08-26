@@ -168,8 +168,6 @@ function BookDataRecived(jsonData, isLoggedIn)
 		myVideoHtml.addEventListener('timeupdate', () => {
 		  let seekerPercent = myVideoHtml.currentTime / myVideoHtml.duration * 100;
 		  
-		  console.log(seekerPercent);
-		  
 		  if (seekerPercent > 80) {
 			  myMoreThanEigthyPercentReachedHandler(seekerPercent);
 		  }
