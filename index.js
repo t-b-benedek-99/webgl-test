@@ -12,6 +12,7 @@ var ssoOverride = {
     staging : "https://api.staging2.v2.bookrclass.com/api/",
     "vcloud-mock": "https://bookr-sso-mock-creatit-server.herokuapp.com/api/"
 }
+var currentBooksNumOfPages = 0;
 
 function myStartHandler(e) {
     console.log("play event was called");
@@ -30,13 +31,38 @@ function myEndHandler(e) {
     const params = new Proxy(new URLSearchParams(window.location.search), {
         get: (searchParams, prop) => searchParams.get(prop),
     });
+	
+	let allPagesVisited = [...Array(currentBooksNumOfPages).keys()];
+	let lastPageIndex = currentBooksNumOfPages - 1;
+	
     var result = {
         bookId: params.book,
         userId: null,
         startedAt: started,
         duration: distance,
-        pagesVisited: [],
-        lastPageVisited: 0,
+        pagesVisited: allPagesVisited,
+        lastPageVisited: lastPageIndex,
+    };
+    var resultJson = JSON.stringify(result)
+    console.log(resultJson)
+    window.top.postMessage(resultJson, '*');
+}
+
+function myMoreThanEigthyPercentReachedHandler(seekerPercent) {
+    const params = new Proxy(new URLSearchParams(window.location.search), {
+        get: (searchParams, prop) => searchParams.get(prop),
+    });
+	
+	let allPagesVisited = [...Array(currentBooksNumOfPages).keys()];
+	let lastPageIndex = currentBooksNumOfPages - 1;
+	
+    var result = {
+        bookId: params.book,
+        userId: null,
+        startedAt: started,
+        duration: seekerPercent,
+        pagesVisited: allPagesVisited,
+        lastPageVisited: lastPageIndex,
     };
     var resultJson = JSON.stringify(result)
     console.log(resultJson)
@@ -74,6 +100,8 @@ function BookDataRecived(jsonData, isLoggedIn)
         accessTokenQuery = "&accessToken="+params.accessToken;
     for (var id in jsonData.result.list) {
         var book = jsonData.result.list[id];
+		
+		currentBooksNumOfPages = book.numberOfPages;
 
         const li = document.createElement('li');
         li.innerHTML = `<h3><a href="?book=`+book.id+ accessTokenQuery+ `">`+book.title+`</a></h3>`;
@@ -108,6 +136,16 @@ function BookDataRecived(jsonData, isLoggedIn)
         myVideoHtml.addEventListener('ended',myEndHandler);
         myVideoHtml.addEventListener('pause',myEndHandler);
         myVideoHtml.addEventListener('play',myStartHandler);
+		myVideoHtml.addEventListener('timeupdate', () => {
+		  let seekerPercent = myVideoHtml.currentTime / myVideoHtml.duration * 100;
+		  
+		  console.log(seekerPercent);
+		  
+		  if (seekerPercent > 0.8) {
+			  myMoreThanEigthyPercentReachedHandler(seekerPercent);
+		  }
+		});
+		
         /*myVideoHtml.addEventListener("click", function(event) { 
             console.log("isPlaying" + myVideoHtml.paused );
             console.log("onClick");
