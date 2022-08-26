@@ -141,7 +141,7 @@ function BookDataRecived(jsonData, isLoggedIn)
 		  
 		  console.log(seekerPercent);
 		  
-		  if (seekerPercent > 0.8) {
+		  if (seekerPercent > 80) {
 			  myMoreThanEigthyPercentReachedHandler(seekerPercent);
 		  }
 		});
