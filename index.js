@@ -49,16 +49,32 @@ function myEndHandler(e) {
 }
 
 function pauseBook() {
-	window.unityInstance.SendMessage('JavaScriptHook', 'PauseBook');
+	if (isVideoPlayerNeeded()) {
+		myVideoHtml.pause();
+	} else {
+		window.unityInstance.SendMessage('JavaScriptHook', 'PauseBook');
+	}
 }
 
 function startBook() {
-	window.unityInstance.SendMessage('JavaScriptHook', 'StartBook');
+	if (isVideoPlayerNeeded()) {
+		myVideoHtml.play();
+	} else {
+		window.unityInstance.SendMessage('JavaScriptHook', 'StartBook');
+	}
 }
 
 
 function toggleStartPause() {
-	window.unityInstance.SendMessage('JavaScriptHook', 'TogglePauseBook');
+	if (isVideoPlayerNeeded()) {
+		if (myVideoHtml.paused == true) {
+			myVideoHtml.play();
+		} else {
+			myVideoHtml.pause();
+		}
+	} else {
+		window.unityInstance.SendMessage('JavaScriptHook', 'TogglePauseBook');
+	}
 }
 
 function myMoreThanEigthyPercentReachedHandler(seekerPercent) {
