@@ -46,22 +46,29 @@ function myEndHandler(e) {
     var resultJson = JSON.stringify(result)
     console.log(resultJson)
     window.top.postMessage(resultJson, '*');
-	sendBookReadingDataToBackend(resultJson);
+	sendBookReadingDataToBackend(resultJson, params);
 }
 
-function sendBookReadingDataToBackend(resultJson) {
+function sendBookReadingDataToBackend(resultJson, params) {
 	var res = JSON.parse(resultJson);
 	console.log("The child id is : " + res.userId);	
 	
-	/*let bookReadingDataEndpoint = "https://api.v2.bookrclass.com/api/mobile/child/" + res.userId + "/readBook";
+	if (res.userId && params.accessToken) {
+		let bookReadingDataEndpoint = "https://api.v2.bookrclass.com/api/mobile/child/" + res.userId + "/readBook";
 	
-	fetch(bookReadingDataEndpoint, {method: 'POST', body: resultJson, headers: { 'Content-Type': 'application/json' },})
-		.then(response => {
-			console.log(response.data);
-		}).catch((error) => {
-			console.error('Error:', error);
-		});
-	*/
+		fetch(bookReadingDataEndpoint, {
+			method: 'POST',
+			headers: new Headers({
+                    'Authorization': 'Bearer '+ params.accessToken, 
+                    'Content-Type': 'application/json'
+                }),
+			body: resultJson})
+			.then(response => {
+				console.log(response.data);
+			}).catch((error) => {
+				console.error('Error:', error);
+			});
+	}
 }
 
 function pauseBook() {
@@ -112,7 +119,7 @@ function myMoreThanEigthyPercentReachedHandler(seekerPercent) {
     var resultJson = JSON.stringify(result)
     console.log(resultJson)
     window.top.postMessage(resultJson, '*');
-	sendBookReadingDataToBackend(resultJson);
+	sendBookReadingDataToBackend(resultJson, params);
 }
 
 function LoadingMenu(isLoading)
