@@ -14,6 +14,8 @@ var ssoOverride = {
 }
 var currentBooksNumOfPages = 0;
 
+var currentVideoSeekerPosition = 0;
+
 function myStartHandler(e) {
     console.log("play event was called");
     started = new Date();
@@ -41,6 +43,32 @@ function myEndHandler(e) {
         startedAt: started,
         duration: distance,
         pagesVisited: allPagesVisited,
+        lastPageVisited: lastPageIndex,
+    };
+    var resultJson = JSON.stringify(result)
+    console.log(resultJson)
+    window.top.postMessage(resultJson, '*');
+	sendBookReadingDataToBackend(resultJson, params);
+}
+
+function myPauseHandler(e) {
+	var ended = new Date();
+    var distance = (ended.getTime() - started.getTime()) / 1000;
+    const params = new Proxy(new URLSearchParams(window.location.search), {
+        get: (searchParams, prop) => searchParams.get(prop),
+    });
+	
+	let allPagesVisited = [...Array(currentBooksNumOfPages).keys()];
+	let lastPageIndex = currentBooksNumOfPages - 1;
+	
+	let currPagesVisited = currentVideoSeekerPosition > 80 ? allPagesVisited : [];
+	
+    var result = {
+        bookId: params.book,
+        userId: null,
+        startedAt: started,
+        duration: distance,
+        pagesVisited: currPagesVisited,
         lastPageVisited: lastPageIndex,
     };
     var resultJson = JSON.stringify(result)
@@ -187,10 +215,12 @@ function BookDataRecived(jsonData, isLoggedIn)
     if (myVideoHtml) {
         console.log("myVideoHtml is loading");
         myVideoHtml.addEventListener('ended',myEndHandler);
-        myVideoHtml.addEventListener('pause',myEndHandler);
+        myVideoHtml.addEventListener('pause',myPauseHandler);
         myVideoHtml.addEventListener('play',myStartHandler);
 		myVideoHtml.addEventListener('timeupdate', () => {
 		  let seekerPercent = myVideoHtml.currentTime / myVideoHtml.duration * 100;
+		  
+		  currentVideoSeekerPosition = seekerPercent;
 		  
 		  if (seekerPercent > 80) {
 			  myMoreThanEigthyPercentReachedHandler(seekerPercent);
