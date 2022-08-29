@@ -74,15 +74,17 @@ function myPauseHandler(e) {
     var resultJson = JSON.stringify(result)
     console.log(resultJson)
     window.top.postMessage(resultJson, '*');
-	sendBookReadingDataToBackend(resultJson, params);
+	sendBookReadingDataToBackend(result, params);
 }
 
-function sendBookReadingDataToBackend(resultJson, params) {
-	var res = JSON.parse(resultJson);
-	console.log("The child id is : " + res.userId);	
+function sendBookReadingDataToBackend(result, params) {
+	var resultJson = JSON.stringify(result);
+	console.log("The child id is : " + result.userId);	
 	
-	if (res.userId && params.accessToken) {
-		let bookReadingDataEndpoint = "https://api.v2.bookrclass.com/api/mobile/child/" + res.userId + "/readBook";
+	console.log("The accessToken is : " + params.accessToken);	
+	
+	if (result.userId && params.accessToken) {
+		let bookReadingDataEndpoint = "https://api.v2.bookrclass.com/api/mobile/child/" + result.userId + "/readBook";
 	
 		fetch(bookReadingDataEndpoint, {
 			method: 'POST',
@@ -147,7 +149,7 @@ function myMoreThanEigthyPercentReachedHandler(seekerPercent) {
     var resultJson = JSON.stringify(result)
     console.log(resultJson)
     window.top.postMessage(resultJson, '*');
-	sendBookReadingDataToBackend(resultJson, params);
+	sendBookReadingDataToBackend(result, params);
 }
 
 function LoadingMenu(isLoading)
