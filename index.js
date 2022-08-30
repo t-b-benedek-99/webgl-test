@@ -80,9 +80,14 @@ function myPauseHandler(e) {
 
 function sendBookReadingDataToBackend(result, params) {
 	result.userId = currentChildId;
+	result.client_id = 2;
+	result.client_secret = "BookrAWOauthClientDummySecret4Mobile0000";
 	var resultJson = JSON.stringify(result);
 	
 	if (currentChildId && params.accessToken) {
+		
+		console.log("Book Reading Data sent to server : " + resultJson);
+		
 		let bookReadingDataEndpoint = "https://api.v2.bookrclass.com/api/mobile/child/" + currentChildId + "/readBook";
 	
 		fetch(bookReadingDataEndpoint, {
