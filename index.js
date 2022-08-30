@@ -287,7 +287,11 @@ function LoadMobile()
             }).then(response => {
 				console.log("users/me userId : " + response.json().id);
                 BookDataRecived(jsonData, response.ok);
-            }).catch((error) => {
+				return response.json();
+            }).then(data => {
+				console.log(data);
+			})
+			.catch((error) => {
                 console.error('Error:', error);
                 BookDataRecived(jsonData, false);
             });
