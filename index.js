@@ -13,6 +13,7 @@ var ssoOverride = {
     "vcloud-mock": "https://bookr-sso-mock-creatit-server.herokuapp.com/api/"
 }
 var currentBooksNumOfPages = 0;
+var currentChildId = null;
 
 var currentVideoSeekerPosition = 0;
 
@@ -78,13 +79,11 @@ function myPauseHandler(e) {
 }
 
 function sendBookReadingDataToBackend(result, params) {
+	result.userId = currentChildId;
 	var resultJson = JSON.stringify(result);
-	console.log("The child id is : " + result.userId);	
 	
-	console.log("The accessToken is : " + params.accessToken);	
-	
-	if (result.userId && params.accessToken) {
-		let bookReadingDataEndpoint = "https://api.v2.bookrclass.com/api/mobile/child/" + result.userId + "/readBook";
+	if (currentChildId && params.accessToken) {
+		let bookReadingDataEndpoint = "https://api.v2.bookrclass.com/api/mobile/child/" + currentChildId + "/readBook";
 	
 		fetch(bookReadingDataEndpoint, {
 			method: 'POST',
@@ -93,9 +92,12 @@ function sendBookReadingDataToBackend(result, params) {
                     'Content-Type': 'application/json'
                 }),
 			body: resultJson})
-			.then(response => {
-				console.log(response.data);
-			}).catch((error) => {
+			.then(response => response.json())
+			.then(data => {
+				console.log("Child's Reading Data successfully sent to server!");
+				console.log("Server response : " + data);
+			})
+			.catch((error) => {
 				console.error('Error:', error);
 			});
 	}
@@ -289,8 +291,9 @@ function LoadMobile()
                 BookDataRecived(jsonData, response.ok);
 				return response.json();
             }).then(data => {
-				console.log(data);
-				console.log("user id is : " + data.result.id);
+				// console.log(data);
+				// console.log("user id is : " + data.result.id);
+				currentChildId = data.result.id;
 			}).catch((error) => {
                 console.error('Error:', error);
                 BookDataRecived(jsonData, false);
