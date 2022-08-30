@@ -340,7 +340,7 @@ function LoadMobile()
                 path = ssoOverride[params.ssoId] + path;
             else
                 path = ssoOverride.prod + path;
-			ssoBasePath = path;
+			ssoBasePath = path.replace("oauth/token/sso", "");
             fetch(path, {method: 'POST', body: JSON.stringify(body), headers: { 'Content-Type': 'application/json' },})
             .then(response => {
                 BookDataRecived(jsonData, response.ok);
