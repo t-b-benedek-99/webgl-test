@@ -290,6 +290,7 @@ function LoadMobile()
 				return response.json();
             }).then(data => {
 				console.log(data);
+				console.log("user id is : " + data.id;
 			}).catch((error) => {
                 console.error('Error:', error);
                 BookDataRecived(jsonData, false);
