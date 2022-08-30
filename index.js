@@ -84,11 +84,11 @@ function sendBookReadingDataToBackend(result, params) {
 	
 	let toSend = {
 		results: [
-			startedAt: result.startedAt,
-			duration: result.duration,
-			pagesVisited: result.pagesVisited,
-			lastPageVisited: result.lastPageVisited,
-			bookId: result.bookId
+			startedAt = result.startedAt,
+			duration = result.duration,
+			pagesVisited = result.pagesVisited,
+			lastPageVisited = result.lastPageVisited,
+			bookId = result.bookId
 		]
 	}
 	
