@@ -99,7 +99,7 @@ function sendBookReadingDataToBackend(result, params) {
 	
 	var resultJson = JSON.stringify(toSend);
 	
-	if (currentChildId && (params.accessToken || (params.ssoId && params.token))) {
+	if (currentChildId != undefined && currentChildId != null && (params.accessToken || (params.ssoId && params.token))) {
 		
 		console.log("Book Reading Data sent to server : " + resultJson);
 		
