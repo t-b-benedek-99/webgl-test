@@ -166,6 +166,7 @@ function Loading(isLoading)
 
 function BookDataRecived(jsonData, isLoggedIn)
 {
+	console.log("isLoggedIn : " + isLoggedIn);	
     isCurrentBookFree = isLoggedIn;
     console.log("books data arrived");
     LoadingMenu(false);
