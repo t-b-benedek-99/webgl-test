@@ -79,16 +79,18 @@ function myPauseHandler(e) {
 }
 
 function sendBookReadingDataToBackend(result, params) {
-	// result.userId = currentChildId;
-	//var resultJson = JSON.stringify(result);
+	
+	let res = {
+		startedAt: result.startedAt,
+		duration: result.duration,
+		pagesVisited: result.pagesVisited,
+		lastPageVisited: result.lastPageVisited,
+		bookId: result.bookId
+	}
 	
 	let toSend = {
 		results: [
-			startedAt = result.startedAt,
-			duration = result.duration,
-			pagesVisited = result.pagesVisited,
-			lastPageVisited = result.lastPageVisited,
-			bookId = result.bookId
+			res
 		]
 	}
 	
