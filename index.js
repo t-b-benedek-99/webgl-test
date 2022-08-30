@@ -118,7 +118,7 @@ function sendBookReadingDataToBackend(result, params) {
 		
 		let authToken = params.accessToken ? params.accessToken : ssoUsersAccessToken;
 	
-		fetch(bookReadingDataEndpoint, {
+		fetch(fullCurrentReadingEndpoint, {
 			method: 'POST',
 			headers: new Headers({
                     'Authorization': 'Bearer '+ authToken, 
