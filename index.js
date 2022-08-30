@@ -284,11 +284,10 @@ function LoadMobile()
                     'Authorization': 'Bearer '+ params.accessToken, 
                     'Content-Type': 'application/json'
                 })
-            }).then(response => {
+            }).then(response => response.json())/*.then(response => {
 				console.log("users/me userId : " + response.json().id);
                 BookDataRecived(jsonData, response.ok);
-				return response.json();
-            }).then(data => {
+            })*/.then(data => {
 				console.log(data);
 			})
 			.catch((error) => {
