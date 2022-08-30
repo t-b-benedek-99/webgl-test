@@ -62,7 +62,7 @@ function myPauseHandler(e) {
 	let allPagesVisited = [...Array(currentBooksNumOfPages).keys()];
 	let lastPageIndex = currentBooksNumOfPages - 1;
 	
-	let currPagesVisited = currentVideoSeekerPosition > 80 ? allPagesVisited : [];
+	let currPagesVisited = currentVideoSeekerPosition > 80 ? allPagesVisited : [0];
 	
     var result = {
         bookId: params.book,
@@ -79,10 +79,20 @@ function myPauseHandler(e) {
 }
 
 function sendBookReadingDataToBackend(result, params) {
-	result.userId = currentChildId;
-	result.client_id = 2;
-	result.client_secret = "BookrAWOauthClientDummySecret4Mobile0000";
-	var resultJson = JSON.stringify(result);
+	// result.userId = currentChildId;
+	//var resultJson = JSON.stringify(result);
+	
+	let toSend = {
+		results: [
+			startedAt: result.startedAt,
+			duration: result.duration,
+			pagesVisited: result.pagesVisited,
+			lastPageVisited: result.lastPageVisited,
+			bookId: result.bookId
+		]
+	}
+	
+	var resultJson = JSON.stringify(toSend);
 	
 	if (currentChildId && params.accessToken) {
 		
