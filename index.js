@@ -15,6 +15,9 @@ var ssoOverride = {
 var currentBooksNumOfPages = 0;
 var currentChildId = null;
 
+var ssoUsersAccessToken = null;
+var ssoBasePath = null;
+
 var currentVideoSeekerPosition = 0;
 
 function myStartHandler(e) {
@@ -96,16 +99,29 @@ function sendBookReadingDataToBackend(result, params) {
 	
 	var resultJson = JSON.stringify(toSend);
 	
-	if (currentChildId && params.accessToken) {
+	if (currentChildId && (params.accessToken || (params.ssoId && params.token))) {
 		
 		console.log("Book Reading Data sent to server : " + resultJson);
 		
+		if (!params.accessToken && !ssoBasePath)
+			return;
+		
 		let bookReadingDataEndpoint = "https://api.v2.bookrclass.com/api/mobile/child/" + currentChildId + "/readBook";
+		
+		let bookReadingDataEndpointPrefix = "mobile/child/";
+		let bookReadingDataEndpointSufix = "/readBook";
+		
+		let bReadingEndpointEnding = bookReadingDataEndpointPrefix + currentChildId + bookReadingDataEndpointSufix;
+		let ssoReadingEndpoint = ssoBasePath + bReadingEndpointEnding;
+		
+		let fullCurrentReadingEndpoint = params.accessToken ? bookReadingDataEndpoint : ssoReadingEndpoint;
+		
+		let authToken = params.accessToken ? params.accessToken : ssoUsersAccessToken;
 	
 		fetch(bookReadingDataEndpoint, {
 			method: 'POST',
 			headers: new Headers({
-                    'Authorization': 'Bearer '+ params.accessToken, 
+                    'Authorization': 'Bearer '+ authToken, 
                     'Content-Type': 'application/json'
                 }),
 			body: resultJson})
@@ -324,6 +340,7 @@ function LoadMobile()
                 path = ssoOverride[params.ssoId] + path;
             else
                 path = ssoOverride.prod + path;
+			ssoBasePath = path;
             fetch(path, {method: 'POST', body: JSON.stringify(body), headers: { 'Content-Type': 'application/json' },})
             .then(response => {
                 BookDataRecived(jsonData, response.ok);
@@ -333,6 +350,7 @@ function LoadMobile()
 				console.log(data);
 				console.log("user id is : " + data.user.id);
 				currentChildId = data.user.id;
+				ssoUsersAccessToken = data.access_token;
 			}).catch((error) => {
                 console.error('Error:', error);
                 BookDataRecived(jsonData, false);
