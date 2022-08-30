@@ -327,7 +327,13 @@ function LoadMobile()
             fetch(path, {method: 'POST', body: JSON.stringify(body), headers: { 'Content-Type': 'application/json' },})
             .then(response => {
                 BookDataRecived(jsonData, response.ok);
-            }).catch((error) => {
+				return response.json();
+            })
+			.then(data => {
+				console.log(data);
+				console.log("user id is : " + data.result.id);
+				currentChildId = data.result.id;
+			}).catch((error) => {
                 console.error('Error:', error);
                 BookDataRecived(jsonData, false);
             });
