@@ -331,8 +331,8 @@ function LoadMobile()
             })
 			.then(data => {
 				console.log(data);
-				console.log("user id is : " + data.result.id);
-				currentChildId = data.result.id;
+				console.log("user id is : " + data.user.id);
+				currentChildId = data.user.id;
 			}).catch((error) => {
                 console.error('Error:', error);
                 BookDataRecived(jsonData, false);
