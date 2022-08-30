@@ -285,7 +285,7 @@ function LoadMobile()
                     'Content-Type': 'application/json'
                 })
             }).then(response => {
-				console.log("users/me response : " + response);
+				console.log("users/me response JSON : " + response.json());
                 BookDataRecived(jsonData, response.ok);
             }).catch((error) => {
                 console.error('Error:', error);
