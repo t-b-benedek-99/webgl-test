@@ -165,6 +165,15 @@ function toggleStartPause() {
 	}
 }
 
+window.addEventListener('message', event => {
+    if (event.data === "toggleStartPause")
+        toggleStartPause();
+    else if (event.data === "startBook")
+        startBook();
+    else if (event.data === "pauseBook")
+        pauseBook();
+});
+
 function myMoreThanEigthyPercentReachedHandler(seekerPercent) {
     const params = new Proxy(new URLSearchParams(window.location.search), {
         get: (searchParams, prop) => searchParams.get(prop),
@@ -242,6 +251,7 @@ function BookDataRecived(jsonData, isLoggedIn)
     
     if (bookId){
         videoPlayerBoyHtml.hidden = false;
+		videoPlayerBoyHtml.style.display = "block";
         bookListHtmlItem.remove();
     } else {
         bookListHtmlItem.hidden = false;
@@ -260,9 +270,9 @@ function BookDataRecived(jsonData, isLoggedIn)
 		  
 		  currentVideoSeekerPosition = seekerPercent;
 		  
-		  if (seekerPercent > 80) {
-			  myMoreThanEigthyPercentReachedHandler(seekerPercent);
-		  }
+		  //if (seekerPercent > 80) {
+	      //  myMoreThanEigthyPercentReachedHandler(seekerPercent);
+		  //}
 		});
 		
         /*myVideoHtml.addEventListener("click", function(event) { 
@@ -283,6 +293,10 @@ function BookDataRecived(jsonData, isLoggedIn)
 
 function LoadMobile()
 {
+	bookListHtmlItem.hidden = true;
+    videoPlayerBoyHtml.hidden = true;
+    myVideoHtml.pause();
+	
 	const params = new Proxy(new URLSearchParams(window.location.search), {
         get: (searchParams, prop) => searchParams.get(prop),
     });
@@ -365,9 +379,9 @@ function LoadMobile()
         BookDataRecived(jsonData, false);
     });
 
-    bookListHtmlItem.hidden = true;
-    videoPlayerBoyHtml.hidden = true;
-    myVideoHtml.pause();
+    //bookListHtmlItem.hidden = true;
+    //videoPlayerBoyHtml.hidden = true;
+    //myVideoHtml.pause();
     /* Custom Progressbar - Don't delete it, maybe it can be useful later again - Client asked for it, then changed his mind!
     document.getElementById("my-video").addEventListener("timeupdate", function() {
     // if the video is loaded and duration is known
@@ -379,3 +393,5 @@ function LoadMobile()
     });
     */
 }
+
+window.onblur = (event) => { pauseBook(); };

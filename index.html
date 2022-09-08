@@ -104,7 +104,7 @@
   <body style="text-align: center">
 	<div id="theSpinnerLoaderForMenu" class="loader" style="z-index: 1000; position: absolute; right: 0; left: 0; top: 0; bottom: 0; margin: auto; display: none;"></div>
     <canvas id="unity-canvas" style="background: url('Build/a4378e2f7373bd6d0cccd1f09de8f184.jpg.unityweb') center / cover"></canvas>
-	<div id="video_player_box" style="text-align: center">
+	<div id="video_player_box" style="text-align: center; display: none;">
 		<div id="theSpinnerLoader" class="loader" style="z-index: 1000; position: absolute; right: 0; left: 0; top: 0; bottom: 0; margin: auto; display: none;"></div>
 		<figure>
 			<video id="my-video" playsinline autoplay controls poster="./bookr-class-logo-with-bg.jpg">
@@ -130,7 +130,7 @@
         web browser that
     </video-->
     <ul id="book-list"></ul>
-    <script src="Build/WebGL_TestServerDeploy_2022_08_30_15_00.loader.js"></script>
+    <script src="Build/WebGL_TestServerDeploy_2022_09_08_12_48.loader.js"></script>
     <script src="baseFunctions.js"></script>
     <script src="index.js"></script>
     <script>
@@ -146,7 +146,7 @@
           myobj2.remove();
 
           createUnityInstance(document.querySelector("#unity-canvas"), {
-            dataUrl: "Build/2c206fbff3bf716047c34dd37af092d2.data.unityweb",
+            dataUrl: "Build/4c53f82b3f80c40b38c35dd21b3a7347.data.unityweb",
             frameworkUrl: "Build/4516242288ad97aca3eeb9dbffbd35c3.js.unityweb",
             codeUrl: "Build/d04932056f9e9d87bdb169c8902e26fd.wasm.unityweb",
             streamingAssetsUrl: "StreamingAssets",
