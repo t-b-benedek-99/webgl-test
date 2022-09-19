@@ -26,7 +26,9 @@ function myStartHandler(e) {
     if (!isCurrentBookFree) {
         console.log("Book is not free!");
         myVideoHtml.pause();
-        alert("This book is not free!");
+        //alert("This book is not free!");
+		$('#bookNotFreeModal').modal('show');
+		$('.modal-body').html('<strong>Subscribe to see this book!</strong>');
         /*var href = window.location.href;
         window.location.href = href.split('?')[0];*/
     }
