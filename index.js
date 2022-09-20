@@ -28,7 +28,7 @@ function myStartHandler(e) {
         myVideoHtml.pause();
         //alert("This book is not free!");
 		$('#bookNotFreeModal').modal('show');
-		$('.modal-body').html('<strong>Subscribe to see this book!</strong>');
+		$('.modal-body').html('<img src="./rabbit.png" style="width: 30%; height: 30%" /><br /><br /><strong><h1>Subscribe to see this book!</h1></strong><br />');
         /*var href = window.location.href;
         window.location.href = href.split('?')[0];*/
     }
