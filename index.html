@@ -107,11 +107,17 @@
 	<div class="modal fade" id="bookNotFreeModal" tabindex="-1" role="dialog" aria-labelledby="bookNotFreeModalTitle" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered" role="document">
 		  <div class="modal-content">
-			<div class="modal-body text-center">
+			<div class="modal-header text-center">
+			  <h5 class="modal-title text-center" id="subscriptionNeededModalLongTitle">Subscription needed</h5>
+			  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			  </button>
+			</div>
+			<div class="modal-body text-center display-4">
 			  ...
 			</div>
 			<div class="modal-footer  justify-content-center">
-			  <button type="button" class="btn btn-primary" data-dismiss="modal" style="background-color: #7D2BE6"><strong><h2 class="text-white">Close</h2></strong></button>
+			  <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
 			</div>
 		  </div>
 		</div>
@@ -147,7 +153,7 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="Build/WebGL_TestServerDeploy_2022_09_20_10_07.loader.js"></script>
+    <script src="Build/WebGL_Test_2022_11_21_14_42.loader.js"></script>
     <script src="baseFunctions.js"></script>
     <script src="index.js"></script>
     <script>
@@ -163,13 +169,13 @@
           myobj2.remove();
 
           createUnityInstance(document.querySelector("#unity-canvas"), {
-            dataUrl: "Build/6ee0e119677877d8459ea69f26a3215a.data.unityweb",
-            frameworkUrl: "Build/612251eee4ed330d2e456915443d9e17.js.unityweb",
-            codeUrl: "Build/31142e4b1ec9a6d095ef9eea6e17bc67.wasm.unityweb",
+            dataUrl: "Build/f1946b30cf5cef14c411686eb0362904.data.unityweb",
+            frameworkUrl: "Build/c2e4228d254909a8fb0b6fec82ea00bb.js.unityweb",
+            codeUrl: "Build/c84b1679b3a4ab0ffeb75c9e3f9540d7.wasm.unityweb",
             streamingAssetsUrl: "StreamingAssets",
             companyName: "Bookr",
             productName: "Webapp",
-            productVersion: "1.1.4",
+            productVersion: "1.1.9",
           }).then((unityInstance) => {
 			window.unityInstance = unityInstance;
 		  });

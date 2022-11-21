@@ -14,6 +14,7 @@ var ssoOverride = {
 }
 var currentBooksNumOfPages = 0;
 var currentChildId = null;
+var currentSubscription = null;
 
 var ssoUsersAccessToken = null;
 var ssoBasePath = null;
@@ -28,7 +29,7 @@ function myStartHandler(e) {
         myVideoHtml.pause();
         //alert("This book is not free!");
 		$('#bookNotFreeModal').modal('show');
-		$('.modal-body').html('<img src="./rabbit.png" style="width: 30%; height: 30%" /><br /><br /><strong><h1>Subscribe to see this book!</h1></strong><br />');
+		$('.modal-body').html('<strong>Subscribe to see this book!</strong>');
         /*var href = window.location.href;
         window.location.href = href.split('?')[0];*/
     }
@@ -45,7 +46,7 @@ function myEndHandler(e) {
 	
     var result = {
         bookId: params.book,
-        userId: null,
+        userId: currentChildId,
         startedAt: started,
         duration: distance,
         pagesVisited: allPagesVisited,
@@ -71,7 +72,7 @@ function myPauseHandler(e) {
 	
     var result = {
         bookId: params.book,
-        userId: null,
+        userId: currentChildId,
         startedAt: started,
         duration: distance,
         pagesVisited: currPagesVisited,
@@ -186,7 +187,7 @@ function myMoreThanEigthyPercentReachedHandler(seekerPercent) {
 	
     var result = {
         bookId: params.book,
-        userId: null,
+        userId: currentChildId,
         startedAt: started,
         duration: seekerPercent,
         pagesVisited: allPagesVisited,
@@ -210,10 +211,10 @@ function Loading(isLoading)
     return 
 }
 
-function BookDataRecived(jsonData, isLoggedIn)
+function BookDataRecived(jsonData, isAllowedToSeePaidBooks)
 {
-	console.log("isLoggedIn : " + isLoggedIn);	
-    isCurrentBookFree = isLoggedIn;
+	console.log("isAllowedToSeePaidBooks : " + isAllowedToSeePaidBooks);	
+    isCurrentBookFree = isAllowedToSeePaidBooks;
     console.log("books data arrived");
     LoadingMenu(false);
     const params = new Proxy(new URLSearchParams(window.location.search), {
@@ -337,12 +338,15 @@ function LoadMobile()
                     'Content-Type': 'application/json'
                 })
             }).then(response => {
-                BookDataRecived(jsonData, response.ok);
+                //BookDataRecived(jsonData, response.ok);
 				return response.json();
             }).then(data => {
 				// console.log(data);
 				// console.log("user id is : " + data.result.id);
-				currentChildId = data.result.id;
+				currentChildId = params.activeUserId ?? data.result.id;
+				currentSubscription = data.result.subscription;
+				let isAllowedToSeePaidBooks = currentChildId && currentSubscription && currentSubscription.expirationTime && new Date(currentSubscription.expirationTime) > new Date();;
+				BookDataRecived(jsonData, isAllowedToSeePaidBooks);
 			}).catch((error) => {
                 console.error('Error:', error);
                 BookDataRecived(jsonData, false);
@@ -365,7 +369,7 @@ function LoadMobile()
 			.then(data => {
 				console.log(data);
 				console.log("user id is : " + data.user.id);
-				currentChildId = data.user.id;
+				currentChildId = params.activeUserId ?? data.user.id;
 				ssoUsersAccessToken = data.access_token;
 			}).catch((error) => {
                 console.error('Error:', error);
