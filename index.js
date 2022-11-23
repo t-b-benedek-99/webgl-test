@@ -29,6 +29,14 @@ function myStartHandler(e) {
         myVideoHtml.pause();
         //alert("This book is not free!");
 		$('#bookNotFreeModal').modal('show');
+		
+		if (currentChildId) {
+			document.getElementById("btn-webgl-signin").style.display = "none";
+		}
+		else {
+			document.getElementById("btn-webgl-signin").style.display = "block";
+		}
+		
 		$('.modal-body').html('<img src="./rabbit.png" /><br /><br /><strong>Subscribe to see this book!</strong>');
         /*var href = window.location.href;
         window.location.href = href.split('?')[0];*/
