@@ -127,9 +127,9 @@
 			  ...
 			</div>
 			<div class="modal-footer  justify-content-center">
-			  <button id="btn-webgl-signin" type="button" class="btn btn-primary subscriptionGateFooterBtn" data-dismiss="modal" onclick="window.open('https://app.bookrclass.com/login','_blank')">Sign In</button>
-			  <button type="button" class="btn btn-primary subscriptionGateFooterBtn" data-dismiss="modal" onclick="window.open('https://bookrclass.com/shop/','_blank')">Subscribe</button>
-			  <button type="button" class="btn btn-primary subscriptionGateFooterBtn" data-dismiss="modal">Close</button>
+			  <button id="btn-webgl-signin" type="button" class="btn btn-primary subscriptionGateFooterBtn" data-dismiss="modal" onclick="openLoginAndCloseIFrame()">Sign In</button>
+			  <button type="button" class="btn btn-primary subscriptionGateFooterBtn" data-dismiss="modal" onclick="openShopAndCloseIFrame()">Subscribe</button>
+			  <button type="button" class="btn btn-primary subscriptionGateFooterBtn" data-dismiss="modal" onclick="closeIFrame()">Close</button>
 			</div>
 		  </div>
 		</div>
@@ -165,7 +165,7 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="Build/WebGL_Test_2022_11_25_13_32.loader.js"></script>
+    <script src="Build/WebGL_Test_2022_11_25_13_55.loader.js"></script>
     <script src="baseFunctions.js"></script>
     <script src="index.js"></script>
     <script>
@@ -181,7 +181,7 @@
           myobj2.remove();
 
           createUnityInstance(document.querySelector("#unity-canvas"), {
-            dataUrl: "Build/e184a994c5c3f15bc3f9199fe5ea7acf.data.unityweb",
+            dataUrl: "Build/fa6a528fbd216fe215be7bc63c2d6133.data.unityweb",
             frameworkUrl: "Build/dedde39ccf1550dcff8a49d3677ab71e.js.unityweb",
             codeUrl: "Build/6dd9ea2599fa0ecaa35f814323f36b54.wasm.unityweb",
             streamingAssetsUrl: "StreamingAssets",
