@@ -51,7 +51,7 @@ function myStartHandler(e) {
 			document.getElementById("btn-webgl-signin").style.display = "block";
 		}
 		
-		$('.modal-body').html('<img src="./rabbit.png" /><br /><br /><strong>Subscribe to see this book!</strong>');
+		$('.modal-body').html('<img src="./rabbit.png" /><br /><br /><strong style="font-size: 24px">Subscribe to see this book!</strong>');
         /*var href = window.location.href;
         window.location.href = href.split('?')[0];*/
     }
