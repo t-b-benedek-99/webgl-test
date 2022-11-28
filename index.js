@@ -22,13 +22,11 @@ var ssoBasePath = null;
 var currentVideoSeekerPosition = 0;
 
 function openLoginAndCloseIFrame() {
-	window.open('https://app.bookrclass.com/login','_blank');
-	closeIFrame();
+	window.top.postMessage("InternalCmd_BKR_WebGL_Book_Player_Open_Login_and_Close", '*');
 }
 
 function openShopAndCloseIFrame() {
-	window.open('https://bookrclass.com/shop/','_blank');
-	closeIFrame();
+	window.top.postMessage("InternalCmd_BKR_WebGL_Book_Player_Open_Shop_and_Close", '*');
 }
 
 function closeIFrame() {
