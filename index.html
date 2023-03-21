@@ -5,14 +5,15 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Unity WebGL Player | Webapp</title>
     <style>
-      html, 
-      body {
-          width: 100%;
-          height: 100%;
-          padding: 0;
-          margin: 0;
-          color: black;
-          position: relative;
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            color: black;
+            position: relative;
+            background-color: #DBDFFC;
       }
 
       video_player_box, canvas, iframe, video, figure {
@@ -135,7 +136,7 @@
 		</div>
 	</div>
 	<div id="theSpinnerLoaderForMenu" class="loader" style="z-index: 1000; position: absolute; right: 0; left: 0; top: 0; bottom: 0; margin: auto; display: none;"></div>
-    <canvas id="unity-canvas" style="background: url('Build/a4378e2f7373bd6d0cccd1f09de8f184.jpg.unityweb') center / cover"></canvas>
+    <canvas id="unity-canvas" style="background-color: #DBDFFC"></canvas>
 	<div id="video_player_box" style="text-align: center; display: none;">
 		<div id="theSpinnerLoader" class="loader" style="z-index: 1000; position: absolute; right: 0; left: 0; top: 0; bottom: 0; margin: auto; display: none;"></div>
 		<figure>
@@ -165,7 +166,7 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="Build/WebGL_Test_2022_11_28_09_45.loader.js"></script>
+    <script src="Build/WebGL_Test_2023_03_21_11_47.loader.js"></script>
     <script src="baseFunctions.js"></script>
     <script src="index.js"></script>
     <script>
@@ -181,13 +182,13 @@
           myobj2.remove();
 
           createUnityInstance(document.querySelector("#unity-canvas"), {
-            dataUrl: "Build/54b9b100bc555f6a664c6f7aa17f7910.data.unityweb",
-            frameworkUrl: "Build/ad2d0a899f3e52553a6592902113ed42.js.unityweb",
-            codeUrl: "Build/7239341252c6c6809a45ccb3b007b9e6.wasm.unityweb",
+            dataUrl: "Build/302bbd90e3b38714c8468bc8336fd478.data.unityweb",
+            frameworkUrl: "Build/ed8d2bba7fa6a274da8fa2765b2fe2a9.js.unityweb",
+            codeUrl: "Build/9129204a7dafa1534d11814f8e92dd49.wasm.unityweb",
             streamingAssetsUrl: "StreamingAssets",
             companyName: "Bookr",
             productName: "Webapp",
-            productVersion: "1.2.2",
+            productVersion: "1.2.5",
           }).then((unityInstance) => {
 			window.unityInstance = unityInstance;
 		  });

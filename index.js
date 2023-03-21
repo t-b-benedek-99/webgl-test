@@ -15,6 +15,8 @@ var ssoOverride = {
 var currentBooksNumOfPages = 0;
 var currentChildId = null;
 var currentSubscription = null;
+var hasSchoolSubscription = null;
+var schoolSubscriptionExpirationTime = null;
 
 var ssoUsersAccessToken = null;
 var ssoBasePath = null;
@@ -365,7 +367,10 @@ function LoadMobile()
 				// console.log("user id is : " + data.result.id);
 				currentChildId = params.activeUserId ?? data.result.id;
 				currentSubscription = data.result.subscription;
-				let isAllowedToSeePaidBooks = currentChildId && currentSubscription && currentSubscription.expirationTime && new Date(currentSubscription.expirationTime) > new Date();;
+				hasSchoolSubscription = data.result.hasSchoolSubscription;
+				schoolSubscriptionExpirationTime = data.result.schoolSubscriptionExpirationTime;
+				// console.log("data is :" + JSON.stringify(data));
+				let isAllowedToSeePaidBooks = currentChildId && ((currentSubscription && currentSubscription.expirationTime && new Date(currentSubscription.expirationTime) > new Date()) || (hasSchoolSubscription && schoolSubscriptionExpirationTime && new Date(schoolSubscriptionExpirationTime) > new Date()));
 				BookDataRecived(jsonData, isAllowedToSeePaidBooks);
 			}).catch((error) => {
                 console.error('Error:', error);
