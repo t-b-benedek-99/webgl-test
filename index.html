@@ -166,7 +166,7 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="Build/Class_Web_App.loader.js"></script>
+    <script src="Build/bookr_web_app.loader.js"></script>
     <script src="baseFunctions.js"></script>
     <script src="index.js"></script>
     <script>
@@ -182,13 +182,13 @@
           myobj2.remove();
 
           createUnityInstance(document.querySelector("#unity-canvas"), {
-            dataUrl: "Build/908febefcefa8b7b75afcff962f33d20.data.unityweb",
-            frameworkUrl: "Build/ad2d0a899f3e52553a6592902113ed42.js.unityweb",
-            codeUrl: "Build/f8ab05c67fff661770f1fc44450a69b8.wasm.unityweb",
+            dataUrl: "Build/a41c29adc7ebf332623676f36eaf71fe.data.unityweb",
+            frameworkUrl: "Build/07cb78fcbcc7af6a47caff81c5e2f4dc.js.unityweb",
+            codeUrl: "Build/c2c581896e50cef14390df722c4c43e3.wasm.unityweb",
             streamingAssetsUrl: "StreamingAssets",
             companyName: "Bookr",
             productName: "Webapp",
-            productVersion: "1.2.5",
+            productVersion: "1.2.6",
           }).then((unityInstance) => {
 			window.unityInstance = unityInstance;
 		  });
