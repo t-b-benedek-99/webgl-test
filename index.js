@@ -413,7 +413,7 @@ function LoadMobile()
     //bookListHtmlItem.hidden = true;
     //videoPlayerBoyHtml.hidden = true;
     //myVideoHtml.pause();
-    /* Custom Progressbar - Don't delete it, maybe it can be useful later again - Client asked for it, then changed his mind!
+    /* Custom Progressbar - Don't delete it, maybe it can be useful later
     document.getElementById("my-video").addEventListener("timeupdate", function() {
     // if the video is loaded and duration is known
     if(!isNaN(this.duration)) {
