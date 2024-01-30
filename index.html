@@ -109,6 +109,15 @@
 		background-color: #7D2BE6 !important;
 		font-size: 24px !important;
 	}
+	
+	#accessibility_toggle {
+		height: 100px;
+		width: 100px;
+		background-image: url("acc.gif");
+		background-repeat: no-repeat;
+		background-size: 100px 100px;
+		border: none;
+	}
 
     </style>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -145,12 +154,12 @@
 					To view this video please enable JavaScript, and consider upgrading to a
 					web browser that
 			</video>
-			<!-- Custom Progressbar - don't delete it, it can be useful in future
+			<!-- CODE FOR CUSTOM PROGRESS BAR - Pls don't delete it, because customer asked for this, but then he changed his mind - Maybe it will be useful again in the future!
 			<!--figcaption>
 				<progress id="progress" max="100" value="0">Progress</progress>
 			</figcaption-->
 		</figure>
-		<!-- Custom Play Button - don't delete it, it can be useful in future -->
+		<!-- Custom Play Button - Don't delete it - Customer asked for this but then changed his mind -->
 		<!--div id="video_controls_bar" style="opacity: 0">
 			<!--img id="playpausebtn" onclick="playPause(this,'my-video')" src="white-play-icon-png-4.jpg"/-->
 			<!--img id="playpausebtn" onclick="playPause(this,'my-video')"/-->
@@ -166,7 +175,7 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="Build/bookr_web_app.loader.js"></script>
+    <script src="Build/webgl-test.loader.js"></script>
     <script src="baseFunctions.js"></script>
     <script src="index.js"></script>
     <script>
@@ -182,17 +191,25 @@
           myobj2.remove();
 
           createUnityInstance(document.querySelector("#unity-canvas"), {
-            dataUrl: "Build/a41c29adc7ebf332623676f36eaf71fe.data.unityweb",
-            frameworkUrl: "Build/07cb78fcbcc7af6a47caff81c5e2f4dc.js.unityweb",
-            codeUrl: "Build/c2c581896e50cef14390df722c4c43e3.wasm.unityweb",
+            dataUrl: "Build/77cad38c5f701c4b2a39eeaf25aa0fe6.data.unityweb",
+            frameworkUrl: "Build/9cfc9968771c73762304ed5abe46f39e.js.unityweb",
+            codeUrl: "Build/425a5851c5315bdca2135182d8d63e7e.wasm.unityweb",
             streamingAssetsUrl: "StreamingAssets",
             companyName: "Bookr",
             productName: "Webapp",
-            productVersion: "1.2.6",
+            productVersion: "1.2.8",
           }).then((unityInstance) => {
 			window.unityInstance = unityInstance;
 		  });
       }
     </script>
+	<input type="button" id="accessibility_toggle" data-isactive="0" onclick="toggleAccessabilityMode()">
+	<div style="visibility: hidden;" id="accessability_buttons">
+		<button onclick="startBook()" alt="Play Book">Play Book</button>
+		<button onclick="pauseBook()" alt="Pause">Pause</button>
+		<button onclick="turnToNextPage()" alt="Turn to Next Page">Turn to Next Page</button>
+		<button onclick="turnToPrevPage()" alt="Turn to Previous Page">Turn to Previous Page</button>
+		<button onclick="toggleAutomaticPageTurn()" alt="Toggle Automatic Page Turn">Toggle Automatic Page Turn</button>
+	</div>
   </body>
 </html>
