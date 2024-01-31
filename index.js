@@ -18,41 +18,63 @@ var currentVideoSeekerPosition = 0;
 
 
 function changeBackground(color) {
-   document.body.style.background = color;
-}
+    document.body.style.background = color;
+ }
+ 
+ function toggleToggleBtnBgColor(isAccessibilityModeOn) {
+     if (isAccessibilityModeOn) {		
+         document.getElementById("accessibility_toggle").classList.remove("acc_toggle_btn_bg_color_normal");
+         document.getElementById("accessibility_toggle").classList.add("acc_toggle_btn_bg_color_active");
+     } else {
+         document.getElementById("accessibility_toggle").classList.remove("acc_toggle_btn_bg_color_active");
+         document.getElementById("accessibility_toggle").classList.add("acc_toggle_btn_bg_color_normal");		
+     }
+ }
+ 
+ function toggleAccessabilityMode() {		
+ 
+     isAccessibilityModeOn = !isAccessibilityModeOn;
+     console.log("isAccessibilityModeOn : " + isAccessibilityModeOn);
+     
+     if (isAccessibilityModeOn) {
+         changeBackground("#000000");
+         document.getElementById("accessability_buttons").style.visibility = "visible";
+     }
+     else {
+         changeBackground("#C0C0C0");		
+         document.getElementById("accessability_buttons").style.visibility = "hidden";
+     }
+     toggleToggleBtnBgColor(isAccessibilityModeOn);
 
-function toggleAccessabilityMode() {		
+     dispatchAccessabilityModeUnityMessage(isAccessibilityModeOn);
+ }
 
-	isAccessibilityModeOn = !isAccessibilityModeOn;
-	console.log("isAccessibilityModeOn : " + isAccessibilityModeOn);
-	
-	if (isAccessibilityModeOn) {
-		changeBackground("#000000");		
-		document.getElementById("accessability_buttons").style.visibility = "visible";
-	}
-	else {
-		changeBackground("#ffffff");		
-		document.getElementById("accessability_buttons").style.visibility = "hidden";
-	}
-}
-
-function turnToNextPage() {
-	if (!isVideoPlayerNeeded()) {
-		window.unityInstance.SendMessage('JavaScriptHook', 'TurnToNextPage');
-	}
-}
-
-function turnToPrevPage() {
-	if (!isVideoPlayerNeeded()) {
-		window.unityInstance.SendMessage('JavaScriptHook', 'TurnToPrevPage');
-	}
-}
-
-function toggleAutomaticPageTurn() {
-	if (!isVideoPlayerNeeded()) {
-		window.unityInstance.SendMessage('JavaScriptHook', 'ToggleAutomaticPageTurn');
-	}
-}
+ function dispatchAccessabilityModeUnityMessage(isAccessibilityModeOn) {
+    if (isAccessibilityModeOn) {
+        window.unityInstance.SendMessage('JavaScriptHook', 'AccessibilityModeTurnedOn');
+    }
+    else {
+        window.unityInstance.SendMessage('JavaScriptHook', 'AccessibilityModeTurnedOff');
+    }
+ }
+ 
+ function turnToNextPage() {
+     if (!isVideoPlayerNeeded()) {
+         window.unityInstance.SendMessage('JavaScriptHook', 'TurnToNextPage');
+     }
+ }
+ 
+ function turnToPrevPage() {
+     if (!isVideoPlayerNeeded()) {
+         window.unityInstance.SendMessage('JavaScriptHook', 'TurnToPrevPage');
+     }
+ }
+ 
+ function toggleAutomaticPageTurn() {
+     if (!isVideoPlayerNeeded()) {
+         window.unityInstance.SendMessage('JavaScriptHook', 'ToggleAutomaticPageTurn');
+     }
+ } 
 
 function myStartHandler(e) {
     console.log("play event was called");
