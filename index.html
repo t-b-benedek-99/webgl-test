@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | Webapp</title>
-    <style>
+	<title>Unity WebGL Player | Webapp</title>
+	<style>
         html,
         body {
             width: 100%;
@@ -13,7 +13,7 @@
             margin: 0;
             color: black;
             position: relative;
-            background-color: #DBDFFC;
+            /* background-color: #DBDFFC;*/
       }
 
       video_player_box, canvas, iframe, video, figure {
@@ -23,8 +23,8 @@
         left: 50%;
         -ms-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);
-        width: 100%; 
-        height: 100%; 
+        width: 68%; 
+        height: 68%; 
         background-color: black; 
         max-width: 1120px; 
         max-height: 630px; 
@@ -109,11 +109,51 @@
 		background-color: #7D2BE6 !important;
 		font-size: 24px !important;
 	}
+	
+	#accessibility_toggle {
+		height: 45px;
+		width: 45px;
+		background-image: url("acc.gif");
+		background-repeat: no-repeat;
+		background-size: 45px 45px;
+		/* background-color: #C0C0C0; */
+		margin-top: 15px;
+		border: none;
+	}
+	
+	.acc_toggle_btn_bg_color_normal {
+		background-color: #C0C0C0;
+	}
+	
+	.acc_toggle_btn_bg_color_active {
+		background-color: #000000;
+	}
+	
+	.button-accessability-control {
+	
+	  margin-right: 10px;
+	  padding: 6px 14px;
+	  font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+	  border-radius: 6px;
+	  border: none;
+
+	  background: #6E6D70;
+	  box-shadow: 0px 0.5px 1px rgba(0, 0, 0, 0.1), inset 0px 0.5px 0.5px rgba(255, 255, 255, 0.5), 0px 0px 0px 0.5px rgba(0, 0, 0, 0.12);
+	  color: #DFDEDF;
+	  user-select: none;
+	  -webkit-user-select: none;
+	  touch-action: manipulation;
+	}
+
+	.button-accessability-control:focus {
+	  box-shadow: inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2), 0px 0.5px 1px rgba(0, 0, 0, 0.1), 0px 0px 0px 3.5px rgba(58, 108, 217, 0.5);
+	  outline: 0;
+	}
 
     </style>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   </head>
-  <body style="text-align: center">
+  <body style="text-align: center; background-color: #C0C0C0;">
 	<!-- Book Not Free Popup Modal -->
 	<div class="modal fade" id="bookNotFreeModal" tabindex="-1" role="dialog" aria-labelledby="bookNotFreeModalTitle" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered" role="document">
@@ -145,12 +185,12 @@
 					To view this video please enable JavaScript, and consider upgrading to a
 					web browser that
 			</video>
-			<!-- Custom Progressbar - don't delete it, it can be useful in future
+			<!-- CODE FOR CUSTOM PROGRESS BAR - Pls don't delete it, because customer asked for this, but then he changed his mind - Maybe it will be useful again in the future!
 			<!--figcaption>
 				<progress id="progress" max="100" value="0">Progress</progress>
 			</figcaption-->
 		</figure>
-		<!-- Custom Play Button - don't delete it, it can be useful in future -->
+		<!-- Custom Play Button - Don't delete it - Customer asked for this but then changed his mind -->
 		<!--div id="video_controls_bar" style="opacity: 0">
 			<!--img id="playpausebtn" onclick="playPause(this,'my-video')" src="white-play-icon-png-4.jpg"/-->
 			<!--img id="playpausebtn" onclick="playPause(this,'my-video')"/-->
@@ -166,7 +206,7 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="Build/webgl-test-2024-02-11-10-30.loader.js"></script>
+    <script src="Build/webgl-test-accessibility.loader.js"></script>
     <script src="baseFunctions.js"></script>
     <script src="index.js"></script>
     <script>
@@ -182,17 +222,25 @@
           myobj2.remove();
 
           createUnityInstance(document.querySelector("#unity-canvas"), {
-            dataUrl: "Build/b1686e29f99e562dbc2cc82a491adaab.data.unityweb",
-            frameworkUrl: "Build/df83f2e236d8d0118720f685eff240fc.js.unityweb",
-            codeUrl: "Build/843f7ab6bf696dc71605240ca51757e4.wasm.unityweb",
+            dataUrl: "Build/1474408fae58ba5a423a1f4d19d58163.data.unityweb",
+            frameworkUrl: "Build/c54101ddbf9e416f65e60a91492c3f76.js.unityweb",
+            codeUrl: "Build/ce17534d3f8f579452c7d2b6de6157ec.wasm.unityweb",
             streamingAssetsUrl: "StreamingAssets",
             companyName: "Bookr",
             productName: "Webapp",
-            productVersion: "1.2.6",
+            productVersion: "1.2.8",
           }).then((unityInstance) => {
 			window.unityInstance = unityInstance;
 		  });
       }
     </script>
+	<button id="accessibility_toggle" onclick="toggleAccessabilityMode()" alt="Toggle the Accessibility Mode" class="acc_toggle_btn_bg_color_normal"></button>
+	<div style="visibility: hidden;" id="accessability_buttons">
+		<button onclick="startBook()" alt="Play the Book" class="button-accessability-control">Play Book</button>
+		<button onclick="pauseBook()" alt="Pause the Book" class="button-accessability-control">Pause</button>
+		<button onclick="turnToNextPage()" alt="Turn to the Next Page" class="button-accessability-control">Turn to Next Page</button>
+		<button onclick="turnToPrevPage()" alt="Turn to the Previous Page"  class="button-accessability-control">Turn to Previous Page</button>
+		<button onclick="toggleAutomaticPageTurn()" alt="Toggle the Automatic Page Turn Function" class="button-accessability-control">Toggle Automatic Page Turn</button>
+	</div>
   </body>
 </html>
