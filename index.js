@@ -1,5 +1,5 @@
 
-var isAccessibilityModeOn = false;
+var isAccessibilityModeOn = true;
 var myProjectName = "cet";
 var spinnerLoaderForMenu = document.getElementById("theSpinnerLoaderForMenu");
 var spinnerLoader = document.getElementById("theSpinnerLoader");
@@ -57,6 +57,24 @@ function changeBackground(color) {
         window.unityInstance.SendMessage('JavaScriptHook', 'AccessibilityModeTurnedOff');
     }
  }
+
+ function turnNarrationOn() {
+    if (!isVideoPlayerNeeded()) {
+        window.unityInstance.SendMessage('JavaScriptHook', 'TurnNarrationOn');
+    }
+}
+
+function turnNarrationOff() {
+    if (!isVideoPlayerNeeded()) {
+        window.unityInstance.SendMessage('JavaScriptHook', 'TurnNarrationOff');
+    }
+}
+
+function toggleNarration() {
+    if (!isVideoPlayerNeeded()) {
+        window.unityInstance.SendMessage('JavaScriptHook', 'ToggleNarration');
+    }
+}
  
  function turnToNextPage() {
      if (!isVideoPlayerNeeded()) {

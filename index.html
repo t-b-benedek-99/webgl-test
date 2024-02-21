@@ -206,7 +206,7 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="Build/webgl-test-accessibility-2024-02-21-11-48.loader.js"></script>
+    <script src="Build/webgl-test-accessibility-2024-02-21-12-05.loader.js"></script>
     <script src="baseFunctions.js"></script>
     <script src="index.js"></script>
     <script>
@@ -222,7 +222,7 @@
           myobj2.remove();
 
           createUnityInstance(document.querySelector("#unity-canvas"), {
-            dataUrl: "Build/aeaaff2fca6ae8aaae7ab91c18a596e5.data.unityweb",
+            dataUrl: "Build/d7f91bc48eb8203ad7278cea2b9ed866.data.unityweb",
             frameworkUrl: "Build/ba82d56c822937c31c080cce30a5474f.js.unityweb",
             codeUrl: "Build/4c77864841442ec906fad8391bd747ee.wasm.unityweb",
             streamingAssetsUrl: "StreamingAssets",
@@ -235,11 +235,12 @@
       }
     </script>
 	<button id="accessibility_toggle" onclick="toggleAccessabilityMode()" alt="Toggle the Accessibility Mode" class="acc_toggle_btn_bg_color_normal"></button>
-	<div style="visibility: hidden;" id="accessability_buttons">
+	<div style="visibility: visible;" id="accessability_buttons">
 		<button onclick="startBook()" alt="Play the Book" class="button-accessability-control">Play Book</button>
 		<button onclick="pauseBook()" alt="Pause the Book" class="button-accessability-control">Pause</button>
 		<button onclick="turnToNextPage()" alt="Turn to the Next Page" class="button-accessability-control">Turn to Next Page</button>
 		<button onclick="turnToPrevPage()" alt="Turn to the Previous Page"  class="button-accessability-control">Turn to Previous Page</button>
+		<button onclick="toggleNarration()" alt="Toggle the Narration"  class="button-accessability-control">Toggle the Narration</button>
 		<button onclick="toggleAutomaticPageTurn()" alt="Toggle the Automatic Page Turn Function" class="button-accessability-control">Toggle Automatic Page Turn</button>
 	</div>
   </body>
