@@ -153,7 +153,7 @@
     </style>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   </head>
-  <body style="text-align: center; background-color: #C0C0C0;">
+  <body style="text-align: center; background-color: #000000;">
 	<!-- Book Not Free Popup Modal -->
 	<div class="modal fade" id="bookNotFreeModal" tabindex="-1" role="dialog" aria-labelledby="bookNotFreeModalTitle" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered" role="document">
@@ -206,7 +206,7 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="Build/webgl-test-accessibility-2024-02-21-12-05.loader.js"></script>
+    <script src="Build/webgl-test-accessibility-2024-02-21-16-46.loader.js"></script>
     <script src="baseFunctions.js"></script>
     <script src="index.js"></script>
     <script>
@@ -222,9 +222,9 @@
           myobj2.remove();
 
           createUnityInstance(document.querySelector("#unity-canvas"), {
-            dataUrl: "Build/d7f91bc48eb8203ad7278cea2b9ed866.data.unityweb",
+            dataUrl: "Build/fc4906d9f60bd4791c523070a3ee628a.data.unityweb",
             frameworkUrl: "Build/ba82d56c822937c31c080cce30a5474f.js.unityweb",
-            codeUrl: "Build/4c77864841442ec906fad8391bd747ee.wasm.unityweb",
+            codeUrl: "Build/043f7ff5743982cd53d7af6b7ad6036d.wasm.unityweb",
             streamingAssetsUrl: "StreamingAssets",
             companyName: "Bookr",
             productName: "Webapp",
@@ -234,7 +234,7 @@
 		  });
       }
     </script>
-	<button id="accessibility_toggle" onclick="toggleAccessabilityMode()" alt="Toggle the Accessibility Mode" class="acc_toggle_btn_bg_color_normal"></button>
+	<button id="accessibility_toggle" onclick="toggleAccessabilityMode()" alt="Toggle the Accessibility Mode" class="acc_toggle_btn_bg_color_active"></button>
 	<div style="visibility: visible;" id="accessability_buttons">
 		<button onclick="startBook()" alt="Play the Book" class="button-accessability-control">Play Book</button>
 		<button onclick="pauseBook()" alt="Pause the Book" class="button-accessability-control">Pause</button>
