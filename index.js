@@ -336,4 +336,4 @@ function LoadMobile()
         });
 }
 
-window.onblur = (event) => { pauseBook(); };
+// window.onblur = (event) => { pauseBook(); };
