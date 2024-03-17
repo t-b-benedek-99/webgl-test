@@ -1,6 +1,10 @@
 
 var isAccessibilityModeOn = true;
+var isNoGameModeOn = false;
 var myProjectName = "cet";
+
+SetUpMode();
+
 var spinnerLoaderForMenu = document.getElementById("theSpinnerLoaderForMenu");
 var spinnerLoader = document.getElementById("theSpinnerLoader");
 let bookListHtmlItem = document.getElementById("book-list");
@@ -212,6 +216,34 @@ function Loading(isLoading)
 {
     spinnerLoader.style.display = isLoading ?  "block" : "none";
     return 
+}
+
+function SetUpMode()
+{
+    const params = new Proxy(new URLSearchParams(window.location.search), {
+        get: (searchParams, prop) => searchParams.get(prop),
+    });
+
+    var mode = params.mode;
+
+    if (mode)  {
+        if (mode.toLowerCase() == "accessability") {
+            isAccessibilityModeOn = false;
+            isNoGameModeOn = false;
+        }
+        else if (mode.toLowerCase() == "nogame") {
+            isAccessibilityModeOn = false;
+            isNoGameModeOn = true;
+        }
+        else {
+            isAccessibilityModeOn = false;
+            isNoGameModeOn = false;
+        }
+    }
+    else {
+        isAccessibilityModeOn = false;
+        isNoGameModeOn = false;
+    }
 }
 
 function BookDataRecived(jsonData, isAllowedToSeePaidBooks)
