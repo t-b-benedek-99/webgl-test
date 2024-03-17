@@ -154,6 +154,17 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   </head>
   <body style="text-align: center; background-color: #000000;">
+	<button id="accessibility_toggle" onclick="toggleAccessabilityMode()" role="button" aria-label="Accessibility mode" aria-labelledby="Accessibility mode" alt="Accessibility Mode" class="acc_toggle_btn_bg_color_active"></button>
+	<div style="visibility: visible;" id="accessability_buttons" role="navigation" aria-label="Player controls">
+		<button onclick="startBook()"role="button" alt="Play the Book" class="btn btn-primary button-accessability-control" aria-label="Play" aria-labelledby="Play">Play</button>
+		<button onclick="pauseBook()" role="button" alt="Pause the Book" class="btn btn-primary button-accessability-control"aria-label="Pause the Book" aria-labelledby="Pause the Book">Pause</button>
+		<button onclick="turnToNextPage()" role="button" alt="Turn to the Next Page" class="btn btn-primary button-accessability-control" aria-label="Next Page" aria-labelledby="Next Page">Next Page</button>
+		<button onclick="turnToPrevPage()" role="button" alt="Turn to the Previous Page"  class="btn btn-primary button-accessability-control" aria-label="Previous Page" aria-labelledby="Previous Page">Previous Page</button>
+		<button onclick="toggleNarration()" role="button" alt="Toggle the Narration"  class="btn btn-primary button-accessability-control" aria-label="Toggle the Narration" aria-labelledby="Toggle the Narration">Toggle the Narration</button>
+		<button onclick="toggleAutomaticPageTurn()" role="button" alt="Toggle the Automatic Page Turn Function" class="btn btn-primary button-accessability-control" aria-label="Automatic page turn" aria-labelledby="Automatic page turn">Toggle Automatic Page Turn</button>
+	</div>
+
+
 	<!-- Book Not Free Popup Modal -->
 	<div class="modal fade" id="bookNotFreeModal" tabindex="-1" role="dialog" aria-labelledby="bookNotFreeModalTitle" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered" role="document">
@@ -206,7 +217,7 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="Build/webgl-test-accessibility-2024-02-21-17-26.loader.js"></script>
+    <script src="Build/webgl-cet-nogame-and-accessibility-test-build.loader.js"></script>
     <script src="baseFunctions.js"></script>
     <script src="index.js"></script>
     <script>
@@ -222,9 +233,9 @@
           myobj2.remove();
 
           createUnityInstance(document.querySelector("#unity-canvas"), {
-            dataUrl: "Build/f89793eb032090e70ba2b47ed74dbec6.data.unityweb",
+            dataUrl: "Build/4c766b955d226b731473aa5eac740684.data.unityweb",
             frameworkUrl: "Build/ba82d56c822937c31c080cce30a5474f.js.unityweb",
-            codeUrl: "Build/4faa898cb54c61b2620e747b4112f9ea.wasm.unityweb",
+            codeUrl: "Build/bc9dca29a768c8d277c55301126e78f5.wasm.unityweb",
             streamingAssetsUrl: "StreamingAssets",
             companyName: "Bookr",
             productName: "Webapp",
@@ -234,14 +245,6 @@
 		  });
       }
     </script>
-	<button id="accessibility_toggle" onclick="toggleAccessabilityMode()" alt="Toggle the Accessibility Mode" class="acc_toggle_btn_bg_color_active"></button>
-	<div style="visibility: visible;" id="accessability_buttons">
-		<button onclick="startBook()" alt="Play the Book" class="button-accessability-control">Play Book</button>
-		<button onclick="pauseBook()" alt="Pause the Book" class="button-accessability-control">Pause</button>
-		<button onclick="turnToNextPage()" alt="Turn to the Next Page" class="button-accessability-control">Turn to Next Page</button>
-		<button onclick="turnToPrevPage()" alt="Turn to the Previous Page"  class="button-accessability-control">Turn to Previous Page</button>
-		<button onclick="toggleNarration()" alt="Toggle the Narration"  class="button-accessability-control">Toggle the Narration</button>
-		<button onclick="toggleAutomaticPageTurn()" alt="Toggle the Automatic Page Turn Function" class="button-accessability-control">Toggle Automatic Page Turn</button>
-	</div>
+
   </body>
 </html>
