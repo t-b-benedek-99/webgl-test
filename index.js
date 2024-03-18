@@ -251,8 +251,8 @@ function SetUpMode()
     var mode = params.mode;
 
     if (mode)  {
-        if (mode.toLowerCase() == "accessability") {
-            console.log("Mode = accessability");
+        if (mode.toLowerCase() == "accessibility") {
+            console.log("Mode = accessibility");
             isAccessibilityModeOn = true;
             isNoGameModeOn = false;
         }

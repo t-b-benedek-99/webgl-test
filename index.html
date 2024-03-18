@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>Unity WebGL Player | Webapp</title>
+	<!--title>Unity WebGL Player | Webapp</title-->
+	<title>BOOKR Class player</title>
 	<style>
         html,
         body {
@@ -23,8 +24,8 @@
         left: 50%;
         -ms-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);
-        width: 68%; 
-        height: 68%; 
+        width: 100%; 
+        height: 100%; 
         background-color: black; 
         max-width: 1120px; 
         max-height: 630px; 
@@ -154,8 +155,8 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   </head>
   <body style="text-align: center; background-color: #000000;">
-	<button id="accessibility_toggle" onclick="toggleAccessabilityMode()" role="button" aria-label="Accessibility mode" aria-labelledby="Accessibility mode" alt="Accessibility Mode" class="acc_toggle_btn_bg_color_active"></button>
-	<div style="visibility: visible;" id="accessability_buttons" role="navigation" aria-label="Player controls">
+	<button style="display: none;" id="accessibility_toggle" onclick="toggleAccessabilityMode()" role="button" aria-label="Accessibility mode" aria-labelledby="Accessibility mode" alt="Accessibility Mode" class="acc_toggle_btn_bg_color_active"></button>
+	<div style="display: none;" id="accessability_buttons" role="navigation" aria-label="Player controls">
 		<button onclick="startBook()"role="button" alt="Play the Book" class="btn btn-primary button-accessability-control" aria-label="Play" aria-labelledby="Play">Play</button>
 		<button onclick="pauseBook()" role="button" alt="Pause the Book" class="btn btn-primary button-accessability-control"aria-label="Pause the Book" aria-labelledby="Pause the Book">Pause</button>
 		<button onclick="turnToNextPage()" role="button" alt="Turn to the Next Page" class="btn btn-primary button-accessability-control" aria-label="Next Page" aria-labelledby="Next Page">Next Page</button>
@@ -217,7 +218,7 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="Build/webgl-cet-nogame-and-accessibility-test-build17.loader.js"></script>
+    <script src="Build/webgl-cet-nogame-and-accessibility-test-build18.loader.js"></script>
     <script src="baseFunctions.js"></script>
     <script src="index.js"></script>
     <script>
@@ -233,13 +234,13 @@
           myobj2.remove();
 
           createUnityInstance(document.querySelector("#unity-canvas"), {
-            dataUrl: "Build/9b4dcd7be94427eea1bfa2dd804173db.data.unityweb",
+            dataUrl: "Build/a40f9297dacd48804ea1fff1a138cb69.data.unityweb",
             frameworkUrl: "Build/ba82d56c822937c31c080cce30a5474f.js.unityweb",
             codeUrl: "Build/f86fc621f82211e8c1973d9c2dad75da.wasm.unityweb",
             streamingAssetsUrl: "StreamingAssets",
             companyName: "Bookr",
             productName: "Webapp",
-            productVersion: "1.2.8",
+            productVersion: "1.3.1",
           }).then((unityInstance) => {
 			window.unityInstance = unityInstance;
 		  });
