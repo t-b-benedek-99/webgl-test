@@ -10,7 +10,7 @@ window.addEventListener('message', e => {
     // }
 
     if (data == "InternalCmd_WEBGL_PLAYER_LOADED") {
-        setTimeout(SetUpMode, 1000);
+        setTimeout(SetUpMode, 1500);
     }
 
     // console.log('data received : ' + data);
