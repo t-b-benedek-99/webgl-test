@@ -3,6 +3,15 @@ var isAccessibilityModeOn = true;
 var isNoGameModeOn = false;
 var myProjectName = "cet";
 
+window.addEventListener('message', e => {
+    const data = e.data
+    if (data.type === 'log') {
+       console.log('received from child', data.args)
+    }
+
+    console.log('data received : ' + data);
+});
+
 setTimeout(SetUpMode, 5500);
 // setInterval(SetUpMode, 1000);
 
