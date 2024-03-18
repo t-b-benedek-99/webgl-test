@@ -3,7 +3,7 @@ var isAccessibilityModeOn = true;
 var isNoGameModeOn = false;
 var myProjectName = "cet";
 
-// setTimeout(SetUpMode, 5000);
+// setTimeout(SetUpMode, 5500);
 setInterval(SetUpMode, 1000);
 
 var spinnerLoaderForMenu = document.getElementById("theSpinnerLoaderForMenu");
@@ -267,8 +267,6 @@ function SetUpMode()
 
     dispatchAccessabilityModeUnityMessage(isAccessibilityModeOn);
     dispatchNoGameModeUnityMessage(isNoGameModeOn);
-
-    setInterval(SetUpMode, 1000);
 }
 
 function BookDataRecived(jsonData, isAllowedToSeePaidBooks)
