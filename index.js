@@ -3,7 +3,7 @@ var isAccessibilityModeOn = true;
 var isNoGameModeOn = false;
 var myProjectName = "cet";
 
-setTimeout(SetUpMode, 4500);
+setTimeout(SetUpMode, 5000);
 
 var spinnerLoaderForMenu = document.getElementById("theSpinnerLoaderForMenu");
 var spinnerLoader = document.getElementById("theSpinnerLoader");
