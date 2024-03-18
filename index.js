@@ -4,15 +4,19 @@ var isNoGameModeOn = false;
 var myProjectName = "cet";
 
 window.addEventListener('message', e => {
-    const data = e.data
-    if (data.type === 'log') {
-       console.log('received from child', data.args)
+    const data = e.data;
+    // if (data.type === 'log') {
+    //    console.log('received from child', data.args)
+    // }
+
+    if (data == "InternalCmd_WEBGL_PLAYER_LOADED") {
+        SetUpMode();
     }
 
-    console.log('data received : ' + data);
+    // console.log('data received : ' + data);
 });
 
-setTimeout(SetUpMode, 5500);
+// setTimeout(SetUpMode, 5500);
 // setInterval(SetUpMode, 1000);
 
 var spinnerLoaderForMenu = document.getElementById("theSpinnerLoaderForMenu");
