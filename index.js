@@ -62,6 +62,15 @@ function changeBackground(color) {
     }
  }
 
+ function dispatchNoGameModeUnityMessage(isNoGameModeOn) {
+    if (isNoGameModeOn) {
+        window.unityInstance.SendMessage('JavaScriptHook', 'NoGameModeTurnedOn');
+    }
+    else {
+        window.unityInstance.SendMessage('JavaScriptHook', 'NoGameModeTurnedOff');
+    }
+ }
+
  function turnNarrationOn() {
     if (!isVideoPlayerNeeded()) {
         window.unityInstance.SendMessage('JavaScriptHook', 'TurnNarrationOn');
@@ -228,7 +237,7 @@ function SetUpMode()
 
     if (mode)  {
         if (mode.toLowerCase() == "accessability") {
-            isAccessibilityModeOn = false;
+            isAccessibilityModeOn = true;
             isNoGameModeOn = false;
         }
         else if (mode.toLowerCase() == "nogame") {
@@ -244,6 +253,12 @@ function SetUpMode()
         isAccessibilityModeOn = false;
         isNoGameModeOn = false;
     }
+
+    console.log("isAccessibilityModeOn: " + isAccessibilityModeOn);
+    console.log("isNoGameModeOn: " + isNoGameModeOn);
+
+    dispatchAccessabilityModeUnityMessage(isAccessibilityModeOn);
+    dispatchNoGameModeUnityMessage(isNoGameModeOn);
 }
 
 function BookDataRecived(jsonData, isAllowedToSeePaidBooks)
