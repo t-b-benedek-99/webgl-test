@@ -3,7 +3,7 @@ var isAccessibilityModeOn = true;
 var isNoGameModeOn = false;
 var myProjectName = "cet";
 
-setTimeout(SetUpMode, 2000);
+setTimeout(SetUpMode, 3500);
 
 var spinnerLoaderForMenu = document.getElementById("theSpinnerLoaderForMenu");
 var spinnerLoader = document.getElementById("theSpinnerLoader");
@@ -237,19 +237,25 @@ function SetUpMode()
 
     if (mode)  {
         if (mode.toLowerCase() == "accessability") {
+            console.log("Mode = accessability");
             isAccessibilityModeOn = true;
             isNoGameModeOn = false;
         }
         else if (mode.toLowerCase() == "nogame") {
+            console.log("Mode = nogame");
             isAccessibilityModeOn = false;
             isNoGameModeOn = true;
         }
         else {
+            console.log("The 'mode' param was different than expected");
             isAccessibilityModeOn = false;
             isNoGameModeOn = false;
         }
     }
     else {
+        console.log("No 'mode' param was present");
+        console.log("Setting isAccessibilityModeOn : false");
+        console.log("Setting isNoGameModeOn : false");
         isAccessibilityModeOn = false;
         isNoGameModeOn = false;
     }
