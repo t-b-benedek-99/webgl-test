@@ -9,12 +9,62 @@ window.addEventListener('message', e => {
     //    console.log('received from child', data.args)
     // }
 
-    if (data == "InternalCmd_WEBGL_PLAYER_LOADED") {
-        setTimeout(SetUpMode, 1500);
-    }
-
+    // if (data == "InternalCmd_WEBGL_PLAYER_LOADED") {
+        // setTimeout(SetUpMode, 1500);
+    // }
+	
+	if (data == "InternalCmd_startBook") {
+		startBook();
+	}
+	
+	if (data == "InternalCmd_pauseBook") {
+		pauseBook();
+	}
+	
+	if (data == "InternalCmd_turnToNextPage") {
+		turnToNextPage();
+	}
+	
+	if (data == "InternalCmd_turnToPrevPage") {
+		turnToPrevPage();
+	}
+	
+	if (data == "InternalCmd_toggleNarration") {
+		toggleNarration();
+	}
+	
+	if (data == "InternalCmd_toggleAutomaticPageTurn") {
+		toggleAutomaticPageTurn();
+	}
+	
+	if (data == "InternalCmd_togglePauseBook") {
+		toggleStartPause();
+	}
+	
+	if (data == "InternalCmd_turnNarrationOn") {
+		turnNarrationOn();
+	}
+	
+	if (data == "InternalCmd_turnNarrationOff") {
+		turnNarrationOff();
+	}
+	
+	if (data == "InternalCmd_enableAccessibilityMode") {
+		enableAccessibilityMode();
+	}
+	
+	if (data == "InternalCmd_enableNoGameMode") {
+		enableNoGameMode();
+	}
+	
+	if (data == "InternalCmd_enableNormalMode") {
+		enableNormalMode();
+	}
+	
     // console.log('data received : ' + data);
 });
+
+// setTimeout(SetUpMode, 5000);
 
 // setTimeout(SetUpMode, 5500);
 // setInterval(SetUpMode, 1000);
@@ -241,45 +291,89 @@ function Loading(isLoading)
     return 
 }
 
-function SetUpMode()
-{
-    console.log("SetUpMode() CALLED!");
-    const params = new Proxy(new URLSearchParams(window.location.search), {
-        get: (searchParams, prop) => searchParams.get(prop),
-    });
+// function SetUpMode()
+// {
+//     console.log("SetUpMode() CALLED!");
+// 	/*
+//     const params = new Proxy(new URLSearchParams(window.location.search), {
+//         get: (searchParams, prop) => searchParams.get(prop),
+//     });
+// 	*/
+	
+// 	// const params = new URLSearchParams(window.location.search);
+	
+//     // var mode = params.get('mode');
+	
+// 	// var urlmy = new URL(window.location.href);
+// 	// var searchParams = new URLSearchParams(urlmy.search);
+	
+// 	var params = {};
 
-    var mode = params.mode;
+// 	if (location.search) {
+// 		var parts = location.search.substring(1).split('&');
 
-    if (mode)  {
-        if (mode.toLowerCase() == "accessibility") {
-            console.log("Mode = accessibility");
-            isAccessibilityModeOn = true;
-            isNoGameModeOn = false;
-        }
-        else if (mode.toLowerCase() == "nogame") {
-            console.log("Mode = nogame");
-            isAccessibilityModeOn = false;
-            isNoGameModeOn = true;
-        }
-        else {
-            console.log("The 'mode' param was different than expected");
-            isAccessibilityModeOn = false;
-            isNoGameModeOn = false;
-        }
-    }
-    else {
-        console.log("No 'mode' param was present");
-        console.log("Setting isAccessibilityModeOn : false");
-        console.log("Setting isNoGameModeOn : false");
-        isAccessibilityModeOn = false;
-        isNoGameModeOn = false;
-    }
+// 		for (var i = 0; i < parts.length; i++) {
+// 			var nv = parts[i].split('=');
+// 			if (!nv[0]) continue;
+// 			params[nv[0]] = nv[1] || true;
+// 		}
+// 	}
 
-    console.log("isAccessibilityModeOn: " + isAccessibilityModeOn);
-    console.log("isNoGameModeOn: " + isNoGameModeOn);
+// 	var mode = params.mode;
+	
+// 	console.log("'mode' param is : " + mode);
 
-    dispatchAccessabilityModeUnityMessage(isAccessibilityModeOn);
-    dispatchNoGameModeUnityMessage(isNoGameModeOn);
+//     if (mode)  {
+//         if (mode.toLowerCase() == "accessibility") {
+//             console.log("Mode = accessibility");
+//             isAccessibilityModeOn = true;
+//             isNoGameModeOn = false;
+//         }
+//         else if (mode.toLowerCase() == "nogame") {
+//             console.log("Mode = nogame");
+//             isAccessibilityModeOn = false;
+//             isNoGameModeOn = true;
+//         }
+//         else {
+//             console.log("The 'mode' param was different than expected");
+//             isAccessibilityModeOn = false;
+//             isNoGameModeOn = false;
+//         }
+//     }
+//     else {
+//         console.log("No 'mode' param was present");
+//         console.log("Setting isAccessibilityModeOn : false");
+//         console.log("Setting isNoGameModeOn : false");
+//         isAccessibilityModeOn = false;
+//         isNoGameModeOn = false;
+//     }
+
+//     console.log("isAccessibilityModeOn: " + isAccessibilityModeOn);
+//     console.log("isNoGameModeOn: " + isNoGameModeOn);
+
+//     dispatchAccessabilityModeUnityMessage(isAccessibilityModeOn);
+//     dispatchNoGameModeUnityMessage(isNoGameModeOn);
+// }
+
+function enableAccessibilityMode() {
+	isAccessibilityModeOn = true;
+	isNoGameModeOn = false;
+	dispatchNoGameModeUnityMessage(isNoGameModeOn);
+	dispatchAccessabilityModeUnityMessage(isAccessibilityModeOn);
+}
+
+function enableNoGameMode(){
+	isAccessibilityModeOn = false;
+	isNoGameModeOn = true;
+	dispatchNoGameModeUnityMessage(isNoGameModeOn);
+	dispatchAccessabilityModeUnityMessage(isAccessibilityModeOn);
+}
+
+function enableNormalMode(){
+	isAccessibilityModeOn = false;
+	isNoGameModeOn = false;
+	dispatchNoGameModeUnityMessage(isNoGameModeOn);
+	dispatchAccessabilityModeUnityMessage(isAccessibilityModeOn);
 }
 
 function BookDataRecived(jsonData, isAllowedToSeePaidBooks)

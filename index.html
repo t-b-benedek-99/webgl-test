@@ -218,7 +218,7 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="Build/webgl-cet-nogame-and-accessibility-test-build18.loader.js"></script>
+    <script src="Build/webgl-cet-nogame-and-accessibility-test-build19.loader.js"></script>
     <script src="baseFunctions.js"></script>
     <script src="index.js"></script>
     <script>
@@ -233,10 +233,14 @@
           let myobj2 = document.getElementById("book-list");
           myobj2.remove();
 
+		  alert = function(message) {
+    		console.log(message);
+		  }
+
           createUnityInstance(document.querySelector("#unity-canvas"), {
-            dataUrl: "Build/a40f9297dacd48804ea1fff1a138cb69.data.unityweb",
-            frameworkUrl: "Build/ba82d56c822937c31c080cce30a5474f.js.unityweb",
-            codeUrl: "Build/f86fc621f82211e8c1973d9c2dad75da.wasm.unityweb",
+            dataUrl: "Build/3aae9df1fd0432d3c779079cbcee368a.data.unityweb",
+            frameworkUrl: "Build/30fbd5124c8d7b8875d82bcc6bd3114a.js.unityweb",
+            codeUrl: "Build/5cbee6e4e9317b0457f70df39839e513.wasm.unityweb",
             streamingAssetsUrl: "StreamingAssets",
             companyName: "Bookr",
             productName: "Webapp",
