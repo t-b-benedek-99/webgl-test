@@ -3,6 +3,34 @@ var isAccessibilityModeOn = true;
 var isNoGameModeOn = false;
 var myProjectName = "cet";
 
+// Arrowkey navigation feature
+document.onkeydown = checkKey;
+
+function checkKey(e) {
+
+    e = e || window.event;
+
+    // if (e.keyCode == '38') {
+    //     // up arrow
+    //     console.log("Up Arrow Pressed");
+    // }
+    // else if (e.keyCode == '40') {
+    //     // down arrow
+    //     console.log("Down Arrow Pressed");
+    // }
+    
+    if (e.keyCode == '37') {
+       // left arrow
+       console.log("Left Arrow Pressed");
+       turnToPrevPage();
+    }
+    else if (e.keyCode == '39') {
+       // right arrow
+       console.log("Rigth Arrow Pressed");
+       turnToNextPage();
+    }
+}
+
 window.addEventListener('message', e => {
     const data = e.data;
     // if (data.type === 'log') {
